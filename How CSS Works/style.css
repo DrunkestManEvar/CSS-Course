@@ -1,0 +1,171 @@
+/* 
+  Three pillars of writing good HTML and CSS:
+  1. Responsive design
+  2. Writing clean, maintanable and scalable code
+  3. Web perfomance
+
+  1. Responsive design
+  1) Media queries
+  2) Fluid layouts
+  3) Responsive images
+  4) Correct units
+  5) Desktop- or modile-first
+
+  2. Writing clean, maintainable and scalable code
+  1) Clean
+  2) Easy to understand
+  3) Growth
+  4) Reusable
+  5) How to organize files
+  6) How to name classes           5, 6 and 7 make up the CSS architecture
+  7) Hot to structure HTML
+
+  3. Web perfomance
+  1) Less HTTP requests
+  2) Less code
+  3) Compress code
+  4) Use CSS preprocessor
+  5) Less images
+  6) Compress images
+
+  Cascading is the process of resolving conflicts between CSS declarations based on their importance, specificity
+  and order.
+
+  Process of resolving conflicts:
+  1. Importance --> 2. Specificity --> 3. Order
+
+  Importance (from highest to lowest)
+  1) User (client browser) !important declarations
+  2) Author (CSS developer)( !important declarations
+  3) Author declarations
+  4) User declarations
+  5) Browser default declarations
+
+  Specificity
+  1) Inline styles
+  2) IDs
+  3) Classes, pseudo-classes, attributes
+  4) Elements, pseudo-elements
+
+  How we calculate specificity: (Inline, IDs, Classes/pseudo-classes, attributes, elements/pseudo-elements)
+  If any of the declarations has a higher number in parenthesis, than it always wins
+  (1, 0, 0, 0) will always win over (0, 0, 0, 1000000)
+  (0, 1, 0, 0) will always win over (0, 0, 10, 100) etc...
+
+  Order
+  The last declaration wins if all else is equal
+
+  E.g.: (0, 0, 1, 0)
+*/
+
+.button {
+  /* (0, 0, 1, 0) 1 class */
+  color: white;
+  font-size: 20px;
+  background-color: red;
+}
+
+nav#nav div.pull-right .button {
+  /* (0, 1, 2, 2) 1 ID, 2 classes, 2 elements */
+  background-color: green; /* this style declaration wins based on specificity */
+}
+
+a {
+  /* (0, 0, 0, 1) 1 element */
+  background-color: purple;
+}
+
+#nav a.button:hover {
+  /* (0, 1, 2, 1) 1 ID, 2 classes (class and pseudo-class), 1 element */
+  /* even though this declaration is only for :hover state, it still counts as a class
+  and so it has lower specificity than declaration with green bg and that is why it is never triggered
+  to actually trigger it we need to give it more specificity than the green bg declaration, e.g.:
+  nav#nav div.pull-right .button:hover (0, 1, 3, 2) */
+  background-color: yellow;
+}
+
+/* 
+Main takeaways:
+1) !important always wins
+2) Inline styles always win over external or internal style sheets
+3) 1 ID is more important than 1000 classes
+4) 1 class is more important than 1000 elements
+5) * selector has the lowest specificity (0, 0, 0, 0) and so loses to every other declaration
+6) We should rely on specificity, not on order
+7) We need to rely on order only when using 3rd party stylesheets
+*/
+
+/* 
+When we declare a padding or a margin as a %, it always takes parent element's width as a measurement
+*/
+
+.parent {
+  background-color: black;
+  width: 1000px;
+  height: 1500px;
+}
+
+.child {
+  background-color: orange;
+  margin: 10%;
+  padding: 10%;
+  /* so here both padding and margin are 100px which is 10% of parent's width */
+}
+
+/* 
+Value processing:
+1) Each property has an initial value that is used if nothing is declared and there is nothing to inherit
+2) Browsers specify the defualt font-size which is usually 16px
+3) All declared percentages values always get converted to pixels
+4) Percentage related to font-size of an element is calculated based on the element's parent font-size
+5) Percentage related to lengths of an element is calculated based on the element's parent width
+6) Em are measured relative to their parent's font-size if used to specify font-size
+7) Em are measured relative to their own font-size if used to specify lengths
+8) Rem are always measured based on the root element's font-size
+9) Vh and vw are percentages of the viewport's height and width, respectively
+*/
+
+/* 
+Inheritance:
+1) Inheritance passes values from parents to their children
+2) Properties related to text are usually inherited
+3) Properties related to lengths are usually not inherited
+4) Children inherit the computed value and NOT the declared value (see example below)
+5) Inherit keyword forces child to inherit property
+6) Initial keyword forces that property's value to be th default value
+7) Inheritance works only of there is no declared value
+*/
+
+.parent-text {
+  font-size: 20px;
+  line-height: 150%;
+  /* so line height here is 30px (20px * 150%) */
+}
+
+.child-text {
+  font-size: 25px;
+  /* line-height gets inherited and its value is also 30px and NOT 25px * 150%
+  that's because children inherit calculated value and don't just inherit the declared percentage value
+  */
+}
+
+/* 
+Why we use rem
+  Rem is always relative to the root document font-size and so it automatically adapts to whatever value
+  that font-size is set to. Font-size can be set by the user or by the author and rem will adapt nonetheless
+*/
+
+/* 
+CSS Architecture
+
+Think --> Build --> Architecture
+
+1) We need to think about the page that we want to build and pick out components that are independent from their parents,
+and reusable across the project or even other projects.
+2) BEM
+Block - Element - Modifier
+
+Block is a standalone element that is meaningful on its own.
+Element is a part of the block that has no meaning by itself
+Modifier is a specific version of a block or an element
+*/
