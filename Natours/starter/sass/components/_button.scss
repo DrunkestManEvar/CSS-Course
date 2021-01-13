@@ -14,7 +14,7 @@
   }
 
   &:hover {
-    box-shadow: 0px 10px 20px rgba($color-black, 0.2);
+    box-shadow: 0px 1rem 2rem rgba($color-black, 0.2);
     transform: translateY(-0.3rem);
 
     &::after {
@@ -24,7 +24,7 @@
   }
 
   &:active {
-    box-shadow: 0 5px 10px rgba($color-black, 0.2);
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
     transform: translateY(-0.1rem);
   }
 
@@ -50,6 +50,18 @@
 
     &::after {
       background-color: $color-white;
+    }
+  }
+
+  &--green {
+    background-color: $color-primary;
+    color: $color-white;
+    border-radius: 10rem;
+    text-transform: uppercase;
+    transition: all 0.2s;
+
+    &::after {
+      background-color: $color-primary;
     }
   }
 }
