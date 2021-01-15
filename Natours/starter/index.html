@@ -298,21 +298,62 @@
       </div>
     </section>
     <section class="section-booking">
-      <div class="book">
-        <div class="u-margin-bottom--medium">
-          <h3 class="heading-secondary">Start booking now</h3>
-        </div>
-        <div class="row">
-          <form class="book__form">
-            <div class="form-group">
-              <input type="text" id="name" class="form__input" />
-              <label for="name" class="form__label">Full Name</label>
-            </div>
-            <div class="form-group">
-              <input type="text" id="email" class="form__input" />
-              <label for="email" class="form__label">Email</label>
-            </div>
-          </form>
+      <div class="row">
+        <div class="book">
+          <div class="book__form">
+            <form action="#" class="form">
+              <div class="u-margin-bottom-medium">
+                <h2 class="heading-secondary">Start Booking Now!</h2>
+              </div>
+              <div class="form__group">
+                <input
+                  type="text"
+                  class="form__input"
+                  id="full-name"
+                  placeholder="Full Name"
+                  required
+                />
+                <label class="form__label" for="full-name">Full Name</label>
+              </div>
+              <div class="form__group">
+                <input
+                  type="email"
+                  class="form__input"
+                  id="email"
+                  placeholder="Email Address"
+                  required
+                />
+                <label class="form__label" for="email">Email Address</label>
+              </div>
+              <div class="form__group u-margin-bottom-medium">
+                <div class="form__radio-group">
+                  <input
+                    id="radio-small-group"
+                    class="form__radio-input"
+                    type="radio"
+                    name="group-size"
+                  />
+                  <label class="form__radio-label" for="radio-small-group">
+                    <span class="custom-radio"></span>
+                    Small tour group
+                  </label>
+                </div>
+                <div class="form__radio-group">
+                  <input
+                    id="radio-large-group"
+                    class="form__radio-input"
+                    type="radio"
+                    name="group-size"
+                  />
+                  <label class="form__radio-label" for="radio-large-group">
+                    <span class="custom-radio"></span>
+                    Large tour group
+                  </label>
+                </div>
+              </div>
+              <button class="btn btn--green">Next Step &rarr;</button>
+            </form>
+          </div>
         </div>
       </div>
     </section>
