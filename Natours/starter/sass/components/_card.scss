@@ -176,4 +176,70 @@
     font-size: 6rem;
     font-weight: 100;
   }
+
+  @include respond(tab-port) {
+    height: auto;
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+    background-color: $color-white;
+
+    // GENERAL SIDES STYLING
+    &__side {
+      position: relative;
+      height: 100%;
+      box-shadow: none;
+    }
+
+    &--front {
+      background-color: #fff;
+    }
+
+    &:hover &--front {
+      transform: rotateY(0);
+    }
+
+    &:hover &--back {
+      transform: rotateY(0);
+    }
+
+    &__details {
+      text-align: center;
+      padding: 1rem;
+      margin: 0 auto;
+      width: 80%;
+
+      .card__list {
+        font-size: 1.5rem;
+        list-style: none;
+
+        &__item {
+          font-size: 1.5rem;
+          padding: 1rem;
+
+          &:not(:last-child) {
+            border-bottom: 1px solid $color-grey-light-2;
+          }
+        }
+      }
+    }
+
+    // BACK SIDE
+    &--back {
+      transform: rotateY(0);
+      padding: 3rem;
+      -webkit-clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+      clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+    }
+
+    &__call-to-action {
+      position: static;
+      width: 90%;
+      margin: 0 auto;
+      transform: none;
+    }
+
+    &__price-value {
+      font-size: 4rem;
+    }
+  }
 }

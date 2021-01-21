@@ -13,6 +13,10 @@
     border: none;
     border-bottom: solid 3px transparent;
 
+    @include respond(tab-port) {
+      width: 100%;
+    }
+
     &:focus {
       outline: none;
       border-bottom: solid 3px $color-primary;
@@ -42,6 +46,14 @@
   &__radio-group {
     display: inline-block;
     width: 49%;
+
+    @include respond(tab-port) {
+      width: 100%;
+
+      &:not(:last-child) {
+        margin-bottom: 2rem;
+      }
+    }
   }
 
   &__radio-input {

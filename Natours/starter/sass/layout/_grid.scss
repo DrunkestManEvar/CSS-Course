@@ -2,10 +2,19 @@
   max-width: $grid-width;
   margin: 0 auto;
 
+  @include respond(tab-port) {
+    max-width: 50rem;
+    padding: 0 3rem;
+  }
+
   @include clearfix;
 
   &:not(:last-of-type) {
     margin-bottom: $gap-vertical;
+
+    @include respond(tab-port) {
+      margin-bottom: $gap-vertical-small;
+    }
   }
 
   [class^='col-'] {
@@ -14,6 +23,15 @@
 
     &:not(:last-of-type) {
       margin-right: $gap-horizontal;
+
+      @include respond(tab-port) {
+        margin-right: 0;
+        margin-bottom: $gap-vertical-small;
+      }
+    }
+
+    @include respond(tab-port) {
+      width: 100% !important;
     }
   }
 

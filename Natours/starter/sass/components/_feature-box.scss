@@ -22,5 +22,9 @@
     );
     -webkit-background-clip: text;
     background-clip: text;
+
+    @include respond(tab-port) {
+      margin-bottom: 0;
+    }
   }
 }
