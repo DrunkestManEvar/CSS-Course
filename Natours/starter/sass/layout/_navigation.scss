@@ -103,6 +103,7 @@
     position: fixed;
     left: 0;
     top: 0;
+    pointer-events: none;
     z-index: 1500;
     transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
@@ -155,6 +156,7 @@
   &__checkbox:checked ~ &__nav {
     width: 100vw;
     opacity: 1;
+    pointer-events: all;
   }
 
   &__checkbox:checked ~ &__background {
